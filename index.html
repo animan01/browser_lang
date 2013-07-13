@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+
+
+
+<!-- цей код можна вставити в кінці сторінки, перед закриваючим тегом </body> -->
+
+<!-- html-код спливаючого вікна -->
+<div id="language-detect" style='position:absolute;right:10px;top:10px;z-index:99;border:4px ridge yellow;width:500px;height:80px;background-color:#eee;padding:0 0.5em 1em;font-weight:bold;font-family:Calibri,Arial,sans-serif;font-size:130%;text-align:center;border-radius:10px;box-shadow:1px 1px 15px #333;'>
+Основна мова вашого переглядача: <br /><span id="detected-language"></span><br />
+<a href='http://bavovna22.livejournal.com/3489.html' target="_blank" style='text-decoration:none;' id="language-link"></a>
+</div>
+<!-- кінець html-коду вікна -->
+
+<!-- javascript-код програми розпізнавання мови переглядача(браузера) -->
+<script type="text/javascript">
+	function closeLangDiv(){
+		document.getElementById("language-detect").style.display=" none";
+	}
+	var langCode = document.getElementById('detected-language');
+	var languageLink = document.getElementById('language-link');
+	var browserLang = (navigator.language) ? navigator.language : navigator.userLanguage;
+	if (browserLang === "uk" || browserLang === "uk-ua") {
+
+		langCode.innerHTML="<strong style='color:green;'>Українська!</strong>";
+		languageLink.innerHTML="Підтримайте українську мову, допомомагаючи ближнім змінити мовні налаштування їх переглядачів! Дізнайтеся як ...>";
+window.setTimeout("closeLangDiv();", 30);
+	}
+	else if (browserLang === "ru" || browserLang === "ru-ru") {
+		langCode.innerHTML="<strong style='color:red;'>Російська!</strong>";
+		languageLink.innerHTML="Підтримайте українську мову, змінивши мовні налаштування свого переглядача! Дізнайтеся як ...>";
+window.setTimeout("closeLangDiv();", 30000);
+	}
+	else {
+		langCode.innerHTML="<strong style='color:green;'>" + browserLang + "</strong>";
+		languageLink.innerHTML="Підтримайте українську мову, змінивши мовні налаштування свого переглядача! Дізнайтеся як ...>";
+window.setTimeout("closeLangDiv();", 30000);
+	}
+</script>
+<!-- кінець javascript-коду  -->
+
+
+</body>
+</html>
